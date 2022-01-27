@@ -1,0 +1,16 @@
+name: Iris Dataset Classifier
+on: [push]
+jobs:
+  build_model:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Train the model
+      id: model
+      uses: developers-cosmos/Auto-ML-Classifier@master
+      with:
+        myInput: "J'aime bien manger des abricots"
+    - name: Upload model.pkl 
+      uses: actions/upload-artifact@v2
+      with:
+        name: my-artifact
+        path: model.pkl
